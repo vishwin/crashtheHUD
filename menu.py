@@ -1,10 +1,7 @@
-COLS=20
-ROWS=6
-
-HUD_name="Crash the HUD"
-
+from const import *
 import curses
 from menu_items import *
+import traceback
 
 def main(scr):
 	menu_display_max=ROWS - 2
@@ -17,12 +14,17 @@ def main(scr):
 		scr.hline(1, 0, curses.ACS_HLINE, scr.getmaxyx()[1])
 		for i in range(2, 6):
 			menu_i=i - 2 + (menu_display_max - 4)
-			scr.addstr(i, 2, " " * int((COLS - 5 - len(menu_items[menu_i])) / 2) + menu_items[menu_i])
+			item=__import__(menu_items[menu_i])
+			scr.addstr(i, 2, " " * int((COLS - 5 - len(item.title)) / 2) + item.title)
 			if menu_pos==menu_i:
 				scr.addch(i, COLS-2, '>')
 		scr.refresh()
 		keypress=scr.getch()
-		if keypress==258:
+		if keypress==261:
+			item=__import__(menu_items[menu_pos])
+			item.launch(scr)
+			continue
+		elif keypress==258:
 			menu_pos+=1
 			if menu_pos>=len(menu_items):
 				menu_pos=0
@@ -57,3 +59,4 @@ except:
 	scr.keypad(False)
 	curses.echo()
 	curses.endwin()
+	traceback.print_exc()
