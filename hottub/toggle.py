@@ -6,7 +6,7 @@ def toggle(scr):
 	status=False
 	while keypress!=260:
 		status_str="Status: Off"
-		toggle_str="Toggle"
+		toggle_str="Cancel/Toggle"
 		if status==True:
 			status_str="Status: On"
 		scr.addstr(2, int((COLS - len(status_str)) / 2), status_str)
