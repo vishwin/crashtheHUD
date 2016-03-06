@@ -4,10 +4,10 @@ ROWS=6
 HUD_name="Crash the HUD"
 
 import curses
+from menu_items import *
 
 def main(scr):
-	menu_items=("Telemetry", "Navigation", "Temp sync", "Hot tub", "Server move")
-	menu_display_max=4
+	menu_display_max=ROWS - 2
 	menu_pos=0
 	keypress=None
 	
