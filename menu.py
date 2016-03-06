@@ -26,10 +26,14 @@ def main(scr):
 			menu_pos+=1
 			if menu_pos>=len(menu_items):
 				menu_pos=0
+				menu_display_max=ROWS - 2
+				continue
 		elif keypress==259:
 			menu_pos-=1
 			if menu_pos<0:
 				menu_pos=len(menu_items) - 1
+				menu_display_max=len(menu_items)
+				continue
 		if menu_pos==menu_display_max:
 			menu_display_max+=1
 		if menu_pos<menu_display_max - 4:
