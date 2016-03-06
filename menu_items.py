@@ -1,1 +1,1 @@
-menu_items=("navigation", "tempsync", "hottub", "reefer")
+menu_items=("telemetry", "tempsync", "hottub", "reefer")
